@@ -66,7 +66,7 @@
       )
         return;
       QUIZ.sets.forEach((set) =>
-        localStorage.removeItem(storageKey(set.setNumber)),
+        sessionStorage.removeItem(storageKey(set.setNumber)),
       );
       renderMenu();
       showToast("Đã xóa toàn bộ tiến trình.");
@@ -587,7 +587,10 @@
   function saveState() {
     if (!state) return;
     try {
-      localStorage.setItem(storageKey(state.setNumber), JSON.stringify(state));
+      sessionStorage.setItem(
+        storageKey(state.setNumber),
+        JSON.stringify(state),
+      );
     } catch (error) {
       console.warn("Không lưu được tiến trình:", error);
     }
@@ -595,7 +598,7 @@
 
   function loadState(setNumber) {
     try {
-      const raw = localStorage.getItem(storageKey(setNumber));
+      const raw = sessionStorage.getItem(storageKey(setNumber));
       if (!raw) return null;
       const parsed = JSON.parse(raw);
       if (!parsed || !Array.isArray(parsed.answers)) return null;
