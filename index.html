@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ôn thi NOTAM - 5 bộ đề</title>
+    <meta
+      name="description"
+      content="Trang web ôn thi 5 bộ đề, 250 câu, có bộ đếm thời gian và chấm đáp án tức thì."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero" id="top">
+        <div class="hero__content">
+          <p class="eyebrow">AIS Practice Quiz</p>
+          <h1>Ôn thi 5 bộ đề</h1>
+          <p class="hero__subtitle">
+            Mỗi đề 50 câu, thời gian 60 phút. Chọn đáp án xong hệ thống sẽ khóa
+            câu, tô xanh đáp án đúng và tô đỏ lựa chọn sai.
+          </p>
+        </div>
+        <div class="hero__panel" aria-label="Thông tin tổng quan">
+          <div>
+            <span class="panel-number" id="totalQuestions">250</span>
+            <span class="panel-label">câu hỏi</span>
+          </div>
+          <div>
+            <span class="panel-number">05</span>
+            <span class="panel-label">bộ đề</span>
+          </div>
+          <div>
+            <span class="panel-number">60'</span>
+            <span class="panel-label">mỗi đề</span>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section
+          class="view view--active"
+          id="menuView"
+          aria-labelledby="menuTitle"
+        >
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Chọn đề</p>
+              <h2 id="menuTitle">Bắt đầu luyện tập</h2>
+            </div>
+            <button class="ghost-btn" id="clearAllBtn" type="button">
+              Xóa toàn bộ tiến trình
+            </button>
+          </div>
+          <div class="set-grid" id="setGrid"></div>
+        </section>
+
+        <section class="view" id="examView" aria-labelledby="examTitle">
+          <div class="exam-layout">
+            <aside class="exam-sidebar" aria-label="Bảng điều hướng câu hỏi">
+              <div class="exam-card timer-card">
+                <p class="eyebrow">Đang làm</p>
+                <h2 id="examTitle">Đề số 1</h2>
+                <div class="timer" id="timer">60:00</div>
+                <div class="meter" aria-hidden="true">
+                  <span id="timeMeter"></span>
+                </div>
+                <div class="mini-stats">
+                  <div>
+                    <strong id="answeredCount">0</strong><span>Đã làm</span>
+                  </div>
+                  <div>
+                    <strong id="correctCount">0</strong><span>Đúng</span>
+                  </div>
+                  <div><strong id="wrongCount">0</strong><span>Sai</span></div>
+                </div>
+                <div class="sidebar-actions">
+                  <button class="primary-btn" id="submitBtn" type="button">
+                    Nộp bài
+                  </button>
+                  <button class="ghost-btn" id="backMenuBtn" type="button">
+                    Về chọn đề
+                  </button>
+                </div>
+              </div>
+
+              <div class="exam-card palette-card">
+                <div class="palette-head">
+                  <h3>Câu hỏi</h3>
+                  <span id="paletteProgress">0/50</span>
+                </div>
+                <div class="palette" id="palette"></div>
+                <div class="legend">
+                  <span><i class="dot dot--done"></i> Đúng</span>
+                  <span><i class="dot dot--wrong"></i> Sai</span>
+                  <span><i class="dot dot--current"></i> Đang xem</span>
+                </div>
+              </div>
+            </aside>
+
+            <div class="question-area">
+              <div class="question-card" id="questionCard"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="resultView" aria-labelledby="resultTitle">
+          <div class="result-wrap">
+            <div class="result-card">
+              <p class="eyebrow">Kết quả</p>
+              <h2 id="resultTitle">Hoàn thành bài thi</h2>
+              <div class="score-ring" id="scoreRing">
+                <span id="scoreText">0/50</span>
+              </div>
+              <p id="resultSummary" class="result-summary"></p>
+              <div class="result-stats" id="resultStats"></div>
+              <div class="result-actions">
+                <button class="primary-btn" id="reviewBtn" type="button">
+                  Xem lại bài
+                </button>
+                <button class="secondary-btn" id="retryBtn" type="button">
+                  Làm lại đề này
+                </button>
+                <button class="ghost-btn" id="resultMenuBtn" type="button">
+                  Về chọn đề
+                </button>
+              </div>
+            </div>
+            <div class="review-list" id="reviewList"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
